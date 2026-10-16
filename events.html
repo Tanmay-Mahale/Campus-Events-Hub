@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events | Campus Events Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap">
+<a class="brand" href="index.html">Campus<b>Events</b>Hub</a>
+<nav aria-label="Main">
+<a href="index.html">Home</a><a href="events.html" class="active">Events</a><a href="contact.html">Contact</a>
+</nav></div></header>
+<div class="wrap page-title"><h1>Upcoming events</h1><p class="sub">Sample events for this college project. Filter by type.</p></div>
+<div class="wrap" style="padding-bottom:50px">
+<div class="filters" role="group" aria-label="Filter events">
+<button class="on" data-f="all">All</button><button data-f="workshop">Workshops</button><button data-f="fest">Tech fest</button><button data-f="cultural">Cultural</button><button data-f="talk">Talks</button><button data-f="sports">Sports</button>
+</div>
+<div class="list" id="list">
+<article class="ticket" data-cat="workshop"><div class="date"><strong>24</strong><span>Oct</span></div><div class="info"><span class="tag">Workshop &middot; Lab 3</span><h3>Cloud Computing Hands-on Workshop</h3><p>Build and deploy a static site on Vercel. Bring your laptop.</p></div></article>
+<article class="ticket" data-cat="fest"><div class="date"><strong>07</strong><span>Nov</span></div><div class="info"><span class="tag">Tech fest</span><h3>Byte Bash 2026</h3><p>Coding contests, quiz and project showcase.</p></div></article>
+<article class="ticket" data-cat="sports"><div class="date"><strong>14</strong><span>Nov</span></div><div class="info"><span class="tag">Sports</span><h3>Inter-class Cricket Cup</h3><p>Register your team of eleven. Matches on the main ground.</p></div></article>
+<article class="ticket" data-cat="cultural"><div class="date"><strong>21</strong><span>Nov</span></div><div class="info"><span class="tag">Cultural</span><h3>Annual Cultural Evening</h3><p>Music, dance and drama by students.</p></div></article>
+<article class="ticket" data-cat="talk"><div class="date"><strong>05</strong><span>Dec</span></div><div class="info"><span class="tag">Talk</span><h3>Careers in Cloud: Alumni Panel</h3><p>Alumni share how they started in IT.</p></div></article>
+<article class="ticket" data-cat="workshop"><div class="date"><strong>12</strong><span>Dec</span></div><div class="info"><span class="tag">Workshop &middot; Seminar Hall</span><h3>Resume and Interview Skills</h3><p>Practical tips and mock interviews.</p></div></article>
+</div>
+<p id="none" class="sub" hidden>No events of this type yet. Check back soon.</p>
+</div>
+<footer>&copy; 2026 Campus Events Hub. College project website.</footer>
+<script>
+var btns=document.querySelectorAll(".filters button"),cards=document.querySelectorAll("#list .ticket");
+btns.forEach(function(b){b.addEventListener("click",function(){
+ btns.forEach(function(x){x.classList.remove("on")});b.classList.add("on");
+ var n=0;cards.forEach(function(c){var show=b.dataset.f==="all"||c.dataset.cat===b.dataset.f;c.hidden=!show;if(show)n++});
+ document.getElementById("none").hidden=n>0;});});
+</script>
+</body></html>
